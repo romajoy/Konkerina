@@ -18,15 +18,34 @@
             <h2>Current Needles</h2>
             <table>
                 <tr>
-                    <th>Brand</th>
                     <th>Size</th>
-                    <th>Type</th>
+                    <th>Brand</th>
+                    <th>Style</th>
                     <th>Length</th>
                     <th>Material</th>
-                    <th>
-                    <td>
-
-                    </td>
+                    <th>Point</th>
+                    <th>Complete Set</th>
+                    <th>In Use</th>
+                    <th>Current Project</th>
+                    <th>Needs to be replaced</th>
+                    <th>Favorite</th>
+                    <th>Notes</th>
+                </tr>
+                <% for(let i = 0; i < needle.length; i++) %>
+                <tr>
+                    <td><a href="/needle/<%=needles[i].id%>"><% needle[i].size%></a></td>
+                    <td><% needle[i].brand%></td>
+                    <td><% needle[i].style%></td>
+                    <td><% needle[i].long%></td>
+                    <td><% needle[i].material%></td>
+                    <td><% needle[i].point%></td>
+                    <td><% needle[i].setComplete%></td>
+                    <td><% needle[i].inUse%></td>
+                    <td><% needle[i].project%></td>
+                    <td><% needle[i].replace%></td>
+                    <td><% needle[i].favorite%></td>
+                    <td><% needle[i].misc%></td>
+                    <td><form><a class="btn btn-light" href="/needles/<%=needle[i].id%>/edit">Edit</a></form></td>
                 </tr>
             </table>
         </div>
