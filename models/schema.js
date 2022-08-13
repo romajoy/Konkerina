@@ -1,4 +1,4 @@
-// Dating Log App (name TBD)
+// Dating Log App (name TBD) // Graft paper
 
 const mongoose = require('mongoose')
 
