@@ -89,22 +89,22 @@ app.post('/needles', (res, req) => {
     req.body.setComplete = true;
   } else {
     req.body.setComplete = false;
-  }
+  };
   if(req.body.inUse === 'on') {
     req.body.inUse = true;
   } else {
     req.body.inUse = false;
-  }
+  };
   if(req.body.replace === 'on') {
     req.body.replace = true;
   } else {
     req.body.replace = false;
-  }
+  };
   if(req.body.favorite === 'on') {
     req.body.favorite = true;
   } else {
     req.body.favorite = false;
-  }
+  };
   Needle.create(req.body, (err, newNeedle) => {
     res.redirect('/needles')
   })
