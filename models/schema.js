@@ -8,7 +8,7 @@ const needleSchema = new mongoose.Schema({
     size: {type: String, required: true}, // ex. US 6
     brand: {type: String, required: true}, // ex. Chicagoo
     style: {type: String, required: true}, // ex. Circular
-    length: {type: Number}, // ex. 16"
+    long: {type: Number}, // ex. 16"
     material: {type: String}, // ex. metal, dropdown menu
     point: {type: String}, // ex. lace point, dropdown menu
     setComplete: {type: Boolean}, // yes or no // only show if DPN or Straight

@@ -4,7 +4,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const Needles = require('./models/schema.js');
+const Needle = require('./models/schema.js');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -49,6 +49,56 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
+
+app.put('/needles/:id', (req, res) => {
+  Needle.findByIdAndUpdate(req.params.id, req.body, {new: true},  (err, needleUpdate) => {
+    res.redirect('/needles/')
+  })
+})
+
+app.get('/needles/:id/edit', (req, res) => {
+  Needle.findById(req.params.id, (err, foundNeedle) => {
+    res.render('edit.ejs', {
+      needles: foundNeedle
+    })
+  })
+})
+
+app.delete('/needles/:id', (req, res) => {
+  Needle.findByIdAndRemove(req.params.id, (err, badNeedle => {
+    res.redirect('/needles')
+  }))
+})
+
+app.get('/needles/add', (req, res) => {
+  res.render('new.ejs')
+})
+
+app.get('/needles/:id', (req, res) => {
+  Needle.findById (req.params.id, (err, myNeedle) => {
+    res.render('show.ejs', 
+    {
+      needles: myNeedle
+    })
+  })
+})
+
+app.post('/needles', (res, req) => {
+  Needle.create(req.body, (err, newNeedle) => {
+    res.redirect('/needles')
+  })
+})
+
+app.get('/needles', (req, res) => {
+  Needles.find({}, (error, needleMinder) => {
+    res.render('index.ejs', 
+      {
+        needles:needleMinder
+      }
+    )
+  })
+})
+
 app.get('/' , (req, res) => {
   res.send('Hello World!');
 });
