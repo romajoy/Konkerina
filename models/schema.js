@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// Dating Log App (name TBD) // Graft paper
-=======
-// Needle Log
->>>>>>> ff8153f4ac692d31b71123285ea38c0c8a188dc6
+// NeedleMindr
 
 const mongoose = require('mongoose')
 
@@ -10,9 +6,9 @@ const mongoose = require('mongoose')
 const needleSchema = new mongoose.Schema({
     // type: {type: String, required: true}, // needle or hook, if hook show size, brand, material?
     size: {type: String, required: true}, // ex. US 6
-    brand: {type: String, required: true}, // ex. Chicagoo
-    style: {type: String, required: true}, // ex. Circular
-    long: {type: Number}, // ex. 16"
+    brand: {type: String}, // ex. Chicagoo
+    style: {type: String}, // ex. Circular
+    long: {type: String}, // ex. 16"
     material: {type: String}, // ex. metal, dropdown menu
     point: {type: String}, // ex. lace point, dropdown menu
     setComplete: {type: Boolean}, // yes or no // only show if DPN or Straight

@@ -5,6 +5,7 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const Needle = require('./models/schema.js');
+const seedNeedle = require ('./models/seed.js');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -50,27 +51,27 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 
-app.put('/needles/:id', (req, res) => {
-  Needle.findByIdAndUpdate(req.params.id, req.body, {new: true},  (err, needleUpdate) => {
-    res.redirect('/needles/')
-  })
-})
+// app.put('/needles/:id', (req, res) => {
+//   Needle.findByIdAndUpdate(req.params.id, req.body, {new: true},  (err, needleUpdate) => {
+//     res.redirect('/needles/')
+//   })
+// })
 
-app.get('/needles/:id/edit', (req, res) => {
-  Needle.findById(req.params.id, (err, foundNeedle) => {
-    res.render('edit.ejs', {
-      needles: foundNeedle
-    })
-  })
-})
+// app.get('/needles/:id/edit', (req, res) => {
+//   Needle.findById(req.params.id, (err, foundNeedle) => {
+//     res.render('edit.ejs', {
+//       needles: foundNeedle
+//     })
+//   })
+// })
 
-app.delete('/needles/:id', (req, res) => {
-  Needle.findByIdAndRemove(req.params.id, (err, badNeedle => {
-    res.redirect('/needles')
-  }))
-})
+// app.delete('/needles/:id', (req, res) => {
+//   Needle.findByIdAndRemove(req.params.id, (err, badNeedle => {
+//     res.redirect('/needles')
+//   }))
+// })
 
-app.get('/needles/add', (req, res) => {
+app.get('/needles/new', (req, res) => {
   res.render('new.ejs')
 })
 
@@ -78,30 +79,60 @@ app.get('/needles/:id', (req, res) => {
   Needle.findById (req.params.id, (err, myNeedle) => {
     res.render('show.ejs', 
     {
-      needles: myNeedle
+      needle: myNeedle
     })
   })
 })
 
 app.post('/needles', (res, req) => {
+  if(req.body.setComplete === 'on') {
+    req.body.setComplete = true;
+  } else {
+    req.body.setComplete = false;
+  }
+  if(req.body.inUse === 'on') {
+    req.body.inUse = true;
+  } else {
+    req.body.inUse = false;
+  }
+  if(req.body.replace === 'on') {
+    req.body.replace = true;
+  } else {
+    req.body.replace = false;
+  }
+  if(req.body.favorite === 'on') {
+    req.body.favorite = true;
+  } else {
+    req.body.favorite = false;
+  }
   Needle.create(req.body, (err, newNeedle) => {
     res.redirect('/needles')
   })
 })
 
+// app.get('/needles/seed', (req, res) => {
+//   Needle.create(seedNeedle, (err, data) => {
+//     if (err) console.log (err.message);
+//     console.log('Needles added to stash')
+//   })
+//   res.redirect('/needles')
+// })
+
 app.get('/needles', (req, res) => {
-  Needles.find({}, (error, needleMinder) => {
+  Needle.find({}, (error, needleMinder) => {
     res.render('index.ejs', 
       {
-        needles:needleMinder
+        needle:needleMinder
       }
     )
   })
 })
 
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
+
+
+// app.get('/' , (req, res) => {
+//   res.send('Hello World!');
+// });
 
 //___________________
 //Listener
