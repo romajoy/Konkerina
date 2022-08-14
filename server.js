@@ -4,8 +4,8 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const Needle = require('./models/schema.js');
-const seedNeedle = require ('./models/seed.js');
+const Match = require('./models/schema.js');
+const seedDates = require ('./models/seed.js');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -51,86 +51,80 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 
-// app.put('/needles/:id', (req, res) => {
-//   Needle.findByIdAndUpdate(req.params.id, req.body, {new: true},  (err, needleUpdate) => {
-//     res.redirect('/needles/')
-//   })
-// })
-
-// app.get('/needles/:id/edit', (req, res) => {
-//   Needle.findById(req.params.id, (err, foundNeedle) => {
-//     res.render('edit.ejs', {
-//       needles: foundNeedle
-//     })
-//   })
-// })
-
-// app.delete('/needles/:id', (req, res) => {
-//   Needle.findByIdAndRemove(req.params.id, (err, badNeedle => {
-//     res.redirect('/needles')
-//   }))
-// })
-
-app.get('/needles/new', (req, res) => {
+// New - GET / matches / new
+app.get('/matches/new', (req, res) => {
   res.render('new.ejs')
+}) 
+
+
+// Edit - GET / matches / :id / edit
+app.get('/matches/:id/edit', (req, res) => {
+  Match.findById(req.params.id, (err, foundMatch) => {
+    res.render('edit.ejs', {match: foundMatch})
+  })
 })
 
-app.get('/needles/:id', (req, res) => {
-  Needle.findById (req.params.id, (err, myNeedle) => {
-    res.render('show.ejs', 
-    {
-      needle: myNeedle
+// Seed - GET / matches / seed
+app.get('/matches/seed', (req, res) => {
+  Match.create(seedDates, (err, data) => {
+    if (err) console.log(err.message)
+    console.log('Match Added!')
+  })
+  res.redirect('/matches')
+})
+
+// Update - PUT / matches / :id
+app.put('/matches/:id', (req, res) => {
+  Match.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMatch) => {
+    res.redirect('/matches')
+  })
+})
+
+// Show - GET / matches / :id
+app.get('/matches/:id', (req, res) => {
+  Match.findById(req.params.id, (err, showMatch) => {
+    res.render(
+      'show.ejs', 
+      {
+        match:showMatch
+      })
+  })
+})
+
+// Delete - / matches / :id
+app.delete('/marns/:id', (req, res) => {
+  Match.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect('/matches')
+  })
+})
+
+
+
+// Create - POST / matches
+app.post('/matches/', (req, res) => {
+  if (req.body.wouldDateAgain === 'on') {
+    req.body.wouldDateAgain = true;
+  } else {
+    req.body.wouldDateAgain = false;
+  }
+  Match.create(req.body, (err, newMatch) => {
+    res.redirect('/matches')
+  })
+})
+
+
+// Index - GET / matches
+app.get('/matches', (req, res) => {
+  Match.find({}, (err, matchData) => {
+    res.render(
+      'index.ejs', 
+      {
+      match: matchData
     })
   })
 })
 
-app.post('/needles', (res, req) => {
-  if(req.body.setComplete === 'on') {
-    req.body.setComplete = true;
-  } else {
-    req.body.setComplete = false;
-  };
-  if(req.body.inUse === 'on') {
-    req.body.inUse = true;
-  } else {
-    req.body.inUse = false;
-  };
-  if(req.body.replace === 'on') {
-    req.body.replace = true;
-  } else {
-    req.body.replace = false;
-  };
-  if(req.body.favorite === 'on') {
-    req.body.favorite = true;
-  } else {
-    req.body.favorite = false;
-  };
-  Needle.create(req.body, (err, newNeedle) => {
-    res.redirect('/needles')
-  })
-})
-
-// app.get('/needles/seed', (req, res) => {
-//   Needle.create(seedNeedle, (err, data) => {
-//     if (err) console.log (err.message);
-//     console.log('Needles added to stash')
-//   })
-//   res.redirect('/needles')
-// })
-
-app.get('/needles', (req, res) => {
-  Needle.find({}, (error, needleMinder) => {
-    res.render('index.ejs', 
-      {
-        needle:needleMinder
-      }
-    )
-  })
-})
-
-
-
-// app.get('/' , (req, res) => {
+// app.get('/matches' , (req, res) => {
 //   res.send('Hello World!');
 // });
 
