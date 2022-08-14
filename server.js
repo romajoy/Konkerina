@@ -92,7 +92,7 @@ app.get('/matches/:id', (req, res) => {
 })
 
 // Delete - / matches / :id
-app.delete('/marns/:id', (req, res) => {
+app.delete('/matches/:id', (req, res) => {
   Match.findByIdAndRemove(req.params.id, (err, data) => {
     res.redirect('/matches')
   })
