@@ -10,34 +10,31 @@
     </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1><a href="/matches/<%=match._id%>"><%=match.name%></a>></h1>
-            <a class="btn-btn-outline-success" href="/matches">Return To Matches</a>
-            <a class="btn-btn-outline-warning" href="/dates">Return To Dates</a></li>
+    <div class="container"><br>
+        <a class="btn btn-outline-info" href="/dates/">Back to Dates</a>
+        <a class="btn btn-outline-warning" href="/matches">Back to Matches</a><br>
+        <div class="card" style="width: 32rem;">
             
-        </header>
-            <div class="card" style="width: 32rem;">
-                <div class="card-header">
-                    <h2><%=match.name%></h2>
+            <div class="card-header">
+                
+                <h2><%=match.name%></h2>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>When: </b><%=date.when%></li>            
+                    <li class="list-group-item"><b>When: </b><%=date.when?.toDateString()%></li>            
                     <li class="list-group-item"><b>Where: </b><%=date.where%></li>            
-                    <li class="list-group-item"><b>Thoughts: </b><%=date.thoughts%></li>            
+                    <li class="list-group-item"><b>Thoughts: </b><%=date.thoughts%></li>  
+                    <li class="list-group-item">
+                        <% if (match.wouldDateAgain === true) { %>
+                        <b>Would</b> go out with again!
+                        <% } else { %>
+                        Would <b>NOT</b> go out with again!
+                        <% } %> </li>          
                 </ul>
-            </div>
-            <section>
-                <form action="/dates/<%=date._id%>?+method=DELETE" mehtod="POST">
-                <input type="submit" value="Delete Date"/>
-                </form>
-                <section>
-                    <a href="/dates/<%=date._id%>/edit">Edit Date</a>"
-                </section>
-            </section>
-
+            </div> 
+            
+            <a class="btn btn-outline-success" href="/dates/<%=date._id%>/edit">Edit Date</a>
             <a class="btn btn-outline-secondary" href="/matches/<%=match.id%>/edit">Edit Match</a>
-            <a class="btn btn-outline-warning" href="/matches">Back to Matches</a>
+            
         
     </div>
 </body>

@@ -30,13 +30,13 @@
             </div>
             <div class="card" style="width: 32rem;">
                 <div class="card-header">
-                    <h2>Dates with <%=match.name%></h2>
+                    <h4>Dates with <%=match.name%></h4>
                 </div>
-            <ul class="list-group list-group-flush">
-                <% for (let i = 0; i < match.date.lenth; i++) { %>
-                    <li class="list-group-item"><a href="/dates/<%=match.date[i]._id%>"><%=match.date[i].when%></a></li>
-                <%}%>
-            </ul>>
+                <ul class="list-group list-group-flush">
+                    <% for (let i = 0; i < match.outing.length; i++) { %>
+                        <li class="list-group-item"><a href="/dates/<%=match.outing[i]._id%>"><%=match.outing[i].when%></a></li>
+                    <%}%>
+                </ul>
         </div>
         <a class="btn btn-outline-secondary" href="/matches/<%=match.id%>/edit">Edit Match</a>
         <a class="btn btn-outline-warning" href="/matches">Back to Matches</a>

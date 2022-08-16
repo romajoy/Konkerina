@@ -20,12 +20,12 @@
             <form action="/dates" method="POST">
                 <select class="form-control" name="matchId">
                     <% for (let i = 0; i < match.length; i++) { %>
-                    <option value="<%match[i]._id%>"><%=match[i].name%></option>
-                    <% } %>
+                        <option value="<%match[i]._id%>"><%=match[i].name%></option>
+                        <% } %>               
                 </select> <br/>
                 When was your date?<input class="form-control" type="date" name="when"/><br/>
                 <input class="form-control" type="text" name="where" placeholder="Where was your date?"/> <br/>
-                <textarea class="form-control" name="thoughts" placeholder="Give me deets!"></textarea><br/>
+                <textarea class="form-control" name="thoughts" placeholder="Give me deets!"></textarea><br/> 
                 <input class="btn btn-outline-success" type="submit" value="Add New Date"/>
             </form>
         </main>

@@ -38,7 +38,7 @@ const Parser = require("body-parser");
 app.use(Parser.json());
 //use public folder for static assets
 app.use(express.static('public'));
-app.use(matchController)
+app.use('/matches', matchController)
 app.use('/dates', dateController)
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings

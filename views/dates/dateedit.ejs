@@ -11,12 +11,8 @@
 
 <body>
     <header>
-        <h1>Edit <%=date.when%> Date</h1>
-        <nav>
-            <ul>
-                <li> <a href="/">Home</a></li>
-                <li><a href="/dates">Return to Dates</a></li>
-            </ul>
+        <h1>Edit <%=date.when?.toDateString()%> Date</h1>
+                <a class="btn btn-outline-info" href="/">Back to Dates</a></li>
         </nav>
     </header>
     <main>
@@ -37,6 +33,7 @@
         <input type="date" name="when" value="<%=date.when%>"/> <br/>
         <input type="text" name="where" value="<%=date.where%>"/> <br/>
         <textarea name="thoughts"><%date.thoughts%></textarea> <br/>
+        <input type="submit" value="Save Update">
     </form>
     </main>
     

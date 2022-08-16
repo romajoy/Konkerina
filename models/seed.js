@@ -4,7 +4,7 @@ module.exports = [
         age: 32,
         from: "Bridgeport",
         matchedOn: "OK Cupid",
-        // outing: [
+        outing: [],
         //     {
         //     when: 11/05/2019,
         //     where: "Bar on Buena"}
@@ -16,7 +16,7 @@ module.exports = [
         age: 35,
         from: "Lakeview",
         matchedOn: "Tinder",
-        // outing: [
+        outing: [],
         //     {
         //     when: 11/06/2019,
         //     where: "my place, watched 'A Quiety Place'"}
@@ -28,7 +28,7 @@ module.exports = [
         age: 34,
         from: "Irving Park",
         matchedOn: "OK Cupid",
-        // outing: [
+        outing: [],
         //     {
         //     when: 11/07/2019,
         //     where: "The Long Room"}
@@ -40,7 +40,8 @@ module.exports = [
         age: 39,
         from: "Portland",
         matchedOn: "Tinder",
-        // outing: [
+        outing: [],
+
         //     {
         //     when: 11/16/2019,
         //     where: "Carol's Pub"}
@@ -52,7 +53,7 @@ module.exports = [
         age: 35,
         from: "Uptown",
         matchedOn: "Bumble, OK Cupid, Tinder",
-        // outing: [
+        outing: [],
         //     {
         //     when: 12/04/2019,
         //     where: "Bar on Buena"}
@@ -64,7 +65,7 @@ module.exports = [
         age: 29,
         from: "Lincoln Park/West Lakeview",
         matchedOn: "Bumble",
-        // outing: [
+        outing: [],
         //     {
         //     when: 12/14/2019,
         //     where: "Delilah's for drinks, Mexican after, then his place",
@@ -79,7 +80,7 @@ module.exports = [
         age: 37,
         from: "Ireland & Lakeview",
         matchedOn: "Tinder",
-    //     outing: [
+        outing: [],
     //         {
     //         when: 12/22/2019,
     //         where: "Reservoire & Bar on Buena"}
@@ -91,7 +92,7 @@ module.exports = [
         age: 35,
         from: "Burbs",
         matchedOn: "Bumble",
-        // outing: [{
+        outing: [],
         //     when: 02/09/2020,
         //     where: "Golden Nugget"}
         // ],
@@ -102,7 +103,7 @@ module.exports = [
         age: 42,
         from: "NYC",
         matchedOn: "OK Cupid",
-    //     outing: [
+        outing: [],
     //         {
     //         when: 02/11/2020,
     //         where: "Guthrie's Tavern"}
@@ -114,7 +115,7 @@ module.exports = [
         age: 32,
         from: "Inglewood",
         matchedOn: "Tinder",
-    //  outing: [
+        outing: [],
     //         {
     //         when: 02/12/2020,
     //         where: "Burwood Tap",

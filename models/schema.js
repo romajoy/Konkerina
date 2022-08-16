@@ -5,10 +5,10 @@ const Date = require('./dates.js')
 
 // Match Schema
 const beauSchema = new mongoose.Schema({
-    name: {type: String, required: true},
-    age: {type: Number, required: true},
-    from: {type: String, required: true},
-    matchedOn: {type: String, required: true},
+    name: {type: String},
+    age: {type: Number},
+    from: {type: String},
+    matchedOn: {type: String},
     outing: [Date.schema],
     thoughts: {type: String},
     wouldDateAgain: Boolean

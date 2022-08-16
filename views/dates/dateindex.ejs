@@ -26,7 +26,7 @@
             </tr>
             <% for (let i = 0; i < date.length; i++) { %>
                 <tr>
-                    <td><a href="/dates/<%=date[i].when%>"><button type="button" class="btn btn-outline-dark"><%=date[i].when%></button></a></td>
+                    <td><a href="/dates/<%=date[i]._id%>"><button type="button" class="btn btn-outline-dark"><%=date[i].when?.toDateString()%></button></a></td>
                     <td><%=date[i].where%></td>
                     <td><%=date[i].thoughts%></td>
                     <td><form><a class="btn btn-outline-secondary" href="/dates/<%date[i].id%>/edit">edit</a></form></td>
