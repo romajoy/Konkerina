@@ -1,6 +1,7 @@
 // Dating Log App (name TBD)
 
 const mongoose = require('mongoose')
+const Date = require('./dates.js')
 
 // Match Schema
 const beauSchema = new mongoose.Schema({
@@ -8,16 +9,14 @@ const beauSchema = new mongoose.Schema({
     age: {type: Number, required: true},
     from: {type: String, required: true},
     matchedOn: {type: String, required: true},
-    // outing: [{
-    //     when: Date,
-    //     where: String
-    // }],
+    outing: [Date.schema],
     thoughts: {type: String},
     wouldDateAgain: Boolean
 })
 
 const Match = mongoose.model('Match', beauSchema)
 module.exports = Match
+
 
 // Workflow:
 // - Add New Match

@@ -4,8 +4,8 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const Match = require('./models/schema.js');
-const seedDates = require ('./models/seed.js');
+const matchController = require('./controllers/routes.js')
+const dateController = require('./controllers/dateroutes.js')
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -34,10 +34,12 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //___________________
 //Middleware
 //___________________
-
+const Parser = require("body-parser");
+app.use(Parser.json());
 //use public folder for static assets
 app.use(express.static('public'));
-
+app.use(matchController)
+app.use('/dates', dateController)
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
@@ -46,87 +48,7 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 
-//___________________
-// Routes
-//___________________
-//localhost:3000
-
-// New - GET / matches / new
-app.get('/matches/new', (req, res) => {
-  res.render('new.ejs')
-}) 
-
-
-// Edit - GET / matches / :id / edit
-app.get('/matches/:id/edit', (req, res) => {
-  Match.findById(req.params.id, (err, foundMatch) => {
-    res.render('edit.ejs', {match: foundMatch})
-  })
-})
-
-// Seed - GET / matches / seed
-app.get('/matches/seed', (req, res) => {
-  Match.create(seedDates, (err, data) => {
-    if (err) console.log(err.message)
-    console.log('Match Added!')
-  })
-  res.redirect('/matches')
-})
-
-// Update - PUT / matches / :id
-app.put('/matches/:id', (req, res) => {
-  Match.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedMatch) => {
-    res.redirect('/matches')
-  })
-})
-
-// Show - GET / matches / :id
-app.get('/matches/:id', (req, res) => {
-  Match.findById(req.params.id, (err, showMatch) => {
-    res.render(
-      'show.ejs', 
-      {
-        match:showMatch
-      })
-  })
-})
-
-// Delete - / matches / :id
-app.delete('/matches/:id', (req, res) => {
-  Match.findByIdAndRemove(req.params.id, (err, data) => {
-    res.redirect('/matches')
-  })
-})
-
-
-
-// Create - POST / matches
-app.post('/matches/', (req, res) => {
-  if (req.body.wouldDateAgain === 'on') {
-    req.body.wouldDateAgain = true;
-  } else {
-    req.body.wouldDateAgain = false;
-  }
-  Match.create(req.body, (err, newMatch) => {
-    res.redirect('/matches')
-  })
-})
-
-
-// Index - GET / matches
-app.get('/matches', (req, res) => {
-  Match.find({}, (err, matchData) => {
-    res.render(
-      'index.ejs', 
-      {
-      match: matchData
-    })
-  })
-})
-
-// app.get('/matches' , (req, res) => {
-//   res.send('Hello World!');
-// });
+// Routes moved to Controller//
 
 //___________________
 //Listener

@@ -27,6 +27,16 @@
                 Would <b>NOT</b> go out with again!
                 <% } %> </li>
             </ul>
+            </div>
+            <div class="card" style="width: 32rem;">
+                <div class="card-header">
+                    <h2>Dates with <%=match.name%></h2>
+                </div>
+            <ul class="list-group list-group-flush">
+                <% for (let i = 0; i < match.date.lenth; i++) { %>
+                    <li class="list-group-item"><a href="/dates/<%=match.date[i]._id%>"><%=match.date[i].when%></a></li>
+                <%}%>
+            </ul>>
         </div>
         <a class="btn btn-outline-secondary" href="/matches/<%=match.id%>/edit">Edit Match</a>
         <a class="btn btn-outline-warning" href="/matches">Back to Matches</a>
