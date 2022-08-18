@@ -14,7 +14,7 @@ router.get('/new', (req, res) => {
 router.delete('/:id', (req, res)=> {
     Match.findByIdAndRemove(req.params.id, (err, foundMatch) => {
         const dateIds = [];
-        for (let i = 0; i < foundMatch.outing.length; i++) {
+        for (let i = 0; i < foundMatch.length; i++) {
             dateIds.push(foundMatch.outing[i]._id)
         }
         Date.remove(
@@ -85,7 +85,8 @@ router.post('/', (req, res) => {
     } else {
         req.body.wouldDateAgain = false;
     }
-    Match.create(req.body, (err, newMatch) => {
+    Match.create(req.body, (err, newMatch) => {  
+        console.log(req.body)    
         res.redirect('/matches')
     })
 })

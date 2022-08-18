@@ -10,15 +10,13 @@
     </head>
 
 <body>
-    <header>
-        <h1>Edit <%=date.when?.toDateString()%> Date</h1>
+    <div class="container">
+        <h2>Edit <%=date.when?.toDateString()%> Date</h2>
                 <a class="btn btn-outline-info" href="/">Back to Dates</a></li>
-        </nav>
-    </header>
-    <main>
+        
         <h2>Deets:</h2>
         <form action="/dates/<%=date._id%>?_method=PUT" method="POST">
-            <select name="matchId">
+            <select type="button" class="btn btn-info drowdown-toggle" name="matchId">
                 <% for (let i = 0; i < match.length; i++) {%>
                     <option 
                     value="<%match[i]._id%>"
@@ -29,13 +27,14 @@
                         <%=match[i].name%>
                     </option>
                 <% } %>
-            </select> <br>
-        <input type="date" name="when" value="<%=date.when%>"/> <br/>
-        <input type="text" name="where" value="<%=date.where%>"/> <br/>
-        <textarea name="thoughts"><%date.thoughts%></textarea> <br/>
-        <input type="submit" value="Save Update">
+            </select> <br> <br>
+        <input class="form-control" type="date" name="when" value="<%=date.when%>"/> <br/>
+        <input class="form-control" type="text" name="where" value="<%=date.where%>"/> <br/>
+        <input class="form-control" type="text" name="thoughts" value="<%date.thoughts%>"/><br/>
+        <input class="btn btn-success" type="submit" value="Save Update">
+        <a class="btn btn-outline-info" href="/dates">Back to Dates</a>
+        <a class="btn btn-outline-warning" href="/matches">Back to Matches</a>
     </form>
-    </main>
-    
+</div>
 </body>
 </html>

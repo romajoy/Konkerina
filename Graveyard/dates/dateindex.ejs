@@ -29,8 +29,8 @@
                     <td><a href="/dates/<%=date[i]._id%>"><button type="button" class="btn btn-outline-dark"><%=date[i].when?.toDateString()%></button></a></td>
                     <td><%=date[i].where%></td>
                     <td><%=date[i].thoughts%></td>
-                    <td><form><a class="btn btn-outline-secondary" href="/dates/<%date[i].id%>/edit">edit</a></form></td>
-                    <td><form action = "/dates/<%=date[i].id%>?_method=DELETE" method="POST">
+                    <td><form><a class="btn btn-outline-secondary" href="/dates/<%date[i]._id%>/edit">edit</a></form></td>
+                    <td><form action = "/dates/<%=date[i]._id%>?_method=DELETE" method="POST">
                     <input class="btn btn-outline-danger" type="submit" value="forget"></form>
                 </td>
                 </tr>

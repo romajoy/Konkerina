@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Match = require('../models/schema.js')
 const Date = require('../models/dates.js')
+const seedMatches = require('../models/seed.js')
 const seedDates = require('../models/dateseed.js')
+
 
 // New - GET / dates / new
 router.get('/new', (req, res) => {
@@ -82,10 +84,10 @@ router.post('/', (req, res) => {
         Date.create(req.body, (err, createdDate) => {
             foundMatch.outing.push(createdDate)
             foundMatch.save((err, data) => {
-                res.redirect('/dates')
             })
         })
     })
+    res.redirect('/dates')
 })
 
 // Update - PUT / dates / :id (WITH MATCHES)

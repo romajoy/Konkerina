@@ -1,42 +1,13 @@
-// Dating Log App (name TBD)
-
 const mongoose = require('mongoose')
-const Date = require('./dates.js')
 
-// Match Schema
-const beauSchema = new mongoose.Schema({
-    name: {type: String},
-    age: {type: Number},
-    from: {type: String},
-    matchedOn: {type: String},
-    outing: [Date.schema],
-    thoughts: {type: String},
-    wouldDateAgain: Boolean
+const dateSchema = new mongoose.Schema({
+    name: {type: String, required: true}, // Name of your date
+    matchedOn: {type: String},  // What app matched you
+    when: {type: Date, required: true}, // When you went out on your date
+    where: {type: String}, // Where you went on your date
+    wouldDateAgain: {type: Boolean}, // If you'd go out with them again
+    thoughts: {type: String} // Thoughts about your date
 })
 
-const Match = mongoose.model('Match', beauSchema)
-module.exports = Match
-
-
-// Workflow:
-// - Add New Match
-// - Add Dates to a Match
-// - Edit/Update Dates & Match
-// 
-// Stretch Goals:
-// - Controllers
-// - Partials
-// - CSS Frameworks
-// 
-// Extra Stretch Goals:
-// - Create Log-in and scale to allow users to creat their own Dating Logs
-//
-// Further down the road:
-// - incorporate google maps for date location
-//
-// Project Timeline:
-// Friday: build out JS & EJS & seed data
-// Weekend: build out 7 restful routes
-// Monday: partials, controllers & CSS frameworks
-// Tuesday: CSS frameworks (if finished, work on log-in feature)
-// Wednesday: (if finished... work on log-in feature)
+const Meet = mongoose.model('Date', dateSchema)
+module.exports = Meet;

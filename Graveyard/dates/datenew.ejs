@@ -10,13 +10,9 @@
     </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Add a Date</h1>
-            <a class="btn btn-outline-warning" href='/matches'>Return to Matches</a>
-            <a class="btn btn-outline-info" href='/dates'>View Dates</a> <br> <br>
-            
-        </header>
-        <main>
+        <h1>Add a Date</h1>
+        <a class="btn btn-outline-warning" href='/matches'>Return to Matches</a>
+        <a class="btn btn-outline-info" href='/dates'>View Dates</a> <br> <br>
             <form action="/dates" method="POST">
                 <select class="form-control" name="matchId">
                     <% for (let i = 0; i < match.length; i++) { %>
