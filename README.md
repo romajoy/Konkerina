@@ -4,13 +4,14 @@
 My Dating Log: [My Dating Log](https://murmuring-woodland-92079.herokuapp.com/dates)
 
 #### Technologies Used
-HTML5
-Bootsrap CSS Framework
-Express
-Node.js
-Mongoose/MongoDB Atlas
-Heroku
-GitHub
+HTML5   
+Bootsrap CSS Framework   
+Express   
+Node.js   
+Mongoose/MongoDB Atlas   
+Heroku   
+GitHub   
+
 
 ## My Approach
 Inspired by a page from one of my bullet journals in 2019, I decided to create a full-stack web app where one could log the dates they've been on.  In the world of app dating, it's easy to meet and talk to many people in a short amount of time, and it can make it hard to keep track of who you have met, who you have talked to, especially when you've only connected in person one or two times.  
