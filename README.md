@@ -1,9 +1,9 @@
 # Konkerina
 
 #### Link to the App
-My Dating Log: [link](https://murmuring-woodland-92079.herokuapp.com/dates)
+My Dating Log: [My Dating Log](https://murmuring-woodland-92079.herokuapp.com/dates)
 
-#### Technologies Used**
+#### Technologies Used
 HTML5
 Bootsrap CSS Framework
 Express
